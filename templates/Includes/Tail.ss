@@ -2,4 +2,4 @@
 
 
 <%-- Please move: Theme javascript (below) should be moved to mysite/code/page.php  --%>
-<script src="{$ThemeDir}/javascript/dist/main.min.js" type="text/javascript"></script>
+<script src="{$ThemeDir}/javascript/main.min.js" type="text/javascript"></script>
