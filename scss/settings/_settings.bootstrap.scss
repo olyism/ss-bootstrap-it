@@ -1,0 +1,212 @@
+$bootstrap-sass-asset-helper: false !default;
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+@import 'bootstrap/settings.bootstrap.colors';
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+@import 'bootstrap/settings.bootstrap.scaffolding';
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+@import 'bootstrap/settings.bootstrap.typography';
+
+
+//== Iconography
+//
+//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
+@import 'bootstrap/settings.bootstrap.iconography';
+
+
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+@import 'bootstrap/settings.bootstrap.components';
+
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+@import 'bootstrap/settings.bootstrap.tables';
+
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+@import 'bootstrap/settings.bootstrap.buttons';
+
+
+//== Forms
+//
+//##
+@import 'bootstrap/settings.bootstrap.forms';
+
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+@import 'bootstrap/settings.bootstrap.dropdowns';
+
+
+//-- Z-index master list
+@import 'bootstrap/settings.bootstrap.zindex';
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+@import 'bootstrap/settings.bootstrap.breakpoints';
+
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+@import 'bootstrap/settings.bootstrap.grid';
+
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+@import 'bootstrap/settings.bootstrap.container';
+
+
+//== Navbar
+//
+//##
+@import 'bootstrap/settings.bootstrap.navbar';
+
+
+//== Navs
+//
+//##
+@import 'bootstrap/settings.bootstrap.navs';
+
+
+//== Pagination
+//
+//##
+@import 'bootstrap/settings.bootstrap.pagination';
+
+
+//== Pager
+//
+//##
+@import 'bootstrap/settings.bootstrap.pager';
+
+
+//== Jumbotron
+//
+//##
+@import 'bootstrap/settings.bootstrap.jumbotron';
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+@import 'bootstrap/settings.bootstrap.form-states';
+
+
+//== Tooltips
+//
+//##
+@import 'bootstrap/settings.bootstrap.tooltips';
+
+
+//== Popovers
+//
+//##
+@import 'bootstrap/settings.bootstrap.popovers';
+
+
+//== Labels
+//
+//##
+@import 'bootstrap/settings.bootstrap.labels';
+
+
+//== Modals
+//
+//##
+@import 'bootstrap/settings.bootstrap.modals';
+
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+@import 'bootstrap/settings.bootstrap.alerts';
+
+
+//== Progress bars
+//
+//##
+@import 'bootstrap/settings.bootstrap.progress-bars';
+
+
+//== List group
+//
+//##
+@import 'bootstrap/settings.bootstrap.list-group';
+
+
+//== Panels
+//
+//##
+@import 'bootstrap/settings.bootstrap.panels';
+
+
+//== Thumbnails
+//
+//##
+@import 'bootstrap/settings.bootstrap.thumbnails';
+
+
+//== Wells
+//
+//##
+@import 'bootstrap/settings.bootstrap.wells';
+
+
+//== Badges
+//
+//##
+@import 'bootstrap/settings.bootstrap.badges';
+
+
+//== Breadcrumbs
+//
+//##
+@import 'bootstrap/settings.bootstrap.breadcrumbs';
+
+
+//== Carousel
+//
+//##
+@import 'bootstrap/settings.bootstrap.carousel';
+
+
+//== Close
+//
+//##
+@import 'bootstrap/settings.bootstrap.close';
+
+
+//== Code
+//
+//##
+@import 'bootstrap/settings.bootstrap.code';
+
+
+//== Type
+//
+//##
+@import 'bootstrap/settings.bootstrap.type';

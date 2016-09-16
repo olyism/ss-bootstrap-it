@@ -1,0 +1,55 @@
+{
+  "name": "ss-bootstrap",
+  "version": "0.1.0",
+  "description": "A Bootstrap boilerplate theme for SilverStripe (ES2015, ITCSS, Gulp, and legacy IE support).",
+  "scripts": {
+    "browsersync": "gulp browsersync",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suhongyang/ss-bootstrap-it.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "gulp",
+    "itcss",
+    "silverstripe",
+    "theme"
+  ],
+  "author": "Oly Su",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suhongyang/ss-bootstrap-it/issues"
+  },
+  "homepage": "https://github.com/suhongyang/ss-bootstrap-it#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "browser-sync": "^2.14.3",
+    "cssnano": "^3.7.4",
+    "glob": "^7.0.6",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sass-lint": "^1.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulpicon": "^0.1.2",
+    "jshint": "^2.9.3",
+    "streamqueue": "^1.1.1"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "html5shiv": "^3.7.3",
+    "jquery": "^1.12.4",
+    "respond.js": "^1.4.2"
+  }
+}

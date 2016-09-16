@@ -1,0 +1,12 @@
+// Typography
+// ----------
+// Simply import typography related styles and tools
+// This css file is mainly used to style the editor and not used on the website
+
+@import 'settings/settings.bootstrap';
+@import 'tools/tools.bootstrap';
+
+.typography {
+  @import 'bootstrap/type';
+  // Import other typography related styles here if available
+}

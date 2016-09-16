@@ -1,0 +1,54 @@
+// ==========================================================================
+// Manifest
+// ==========================================================================
+//
+// CONTENTS
+//
+// SETTINGS
+// BS variables.........Bootstrap variables
+//
+// TOOLS
+// BS tools.............Bootstrap mixins
+//
+// GENERIC
+// BS generic...........Bootstrap's normalize, print and glyphicon
+//
+// ELEMENTS
+// BS elements..........Bootstrap's scaffolding, typography, tablets etc
+//
+// OBJECTS
+// BS components........Bootstrap's components, uncomment them to include in your project
+//
+// COMPONENTS
+// Your components......List your components here
+//
+// THEMES
+// Your themes..........If you have different theme treatment you can list them here
+//
+// UTILITIES
+// BS utilities.........Bootstrap's utilities
+//
+
+// SETTINGS
+@import 'settings/settings.bootstrap'; // local Bootstrap variables overrides
+
+// TOOLS
+@import 'tools/tools.bootstrap'; // list of Bootstrap mixins being used, defaulted to use all
+
+// GENERIC
+@import 'generic/generic.bootstrap';
+
+// ELEMENTS
+@import 'elements/elements.bootstrap';
+
+// OBJECTS
+@import 'objects/objects.bootstrap';
+
+// COMPONENTS
+// Build and include your project’s UI Components here.
+
+// THEMES
+// If you have themes (e.g. xmas, blue etc) put them here
+
+// UTILITIES
+@import 'utilities/utilities.bootstrap';
