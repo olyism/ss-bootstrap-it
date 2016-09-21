@@ -1,8 +1,14 @@
 SilverStripe Bootstrap boilerplate
 ==================================
 
-A SilverStripe boilerplate theme with [Bootstrap 3 sass](https://github.com/twbs/bootstrap-sass), gulp.js workflow, 
-and using the [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) architecture.
+A SilverStripe boilerplate theme with [Bootstrap 3 sass](https://github.com/twbs/bootstrap-sass) and equipped with the
+following practices:
+
+- Simple [gulp.js](http://gulpjs.com/) workflows for css, js and watch tasks 
+- [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) architecture
+- [Airbnb CSS styleguide](https://github.com/airbnb/css) 
+- IE8 HTML5 markup support with [HTML5 Shiv](https://github.com/aFarkas/html5shiv)
+  and media query support with [Respond.js](https://github.com/scottjehl/Respond)
 
 ## Requirements
 
@@ -60,6 +66,11 @@ To add more components, uncomment them in `scss/objects/objects.bootstrap`.
 After editing the variables, custom styling should be included under `scss/components` as separate partials,
 e.g. `_components.store-finder.scss`, `_components.chatbox.scss` etc.
 
+### SCSS lint
+
+This boilerplate uses Airbnb's css style guide. Airbnb's scss lint settings are used to help with maintaining this
+convention. 
+
 ## JavaScript
 
 Custom scripts for the project should go into the 
@@ -73,6 +84,19 @@ To support for legacy IE, [HTML5 Shiv](https://github.com/aFarkas/html5shiv) and
 
 These scripts are loaded by [IE conditional comments](http://www.quirksmode.org/css/condcom.html) in `Head.js`, and not 
 part of gulp's js task.
+
+## Deployment
+
+Run `gulp build` to build the minified css and scripts.
+
+Please note I've intentionally not gitignored the build files (namely `main.css`, `main.js` and `main.min.js`) because 
+not all environments are configured to build the files during deployment.
+
+As a workaround, when collaborating with your team, don't commit the build files (which are meaningless for peer review)
+and only commit and push them for deployment purposes.
+
+If you can automate this process during your deployment process, then great, feel free to add the build files to 
+`.gitignore`. 
 
 ## Legacy IE support
 
@@ -94,3 +118,61 @@ control or flexibility over the load order of certain scripts, that SilverStripe
 Common examples of these scripts are tracking, web fonts, or any other custom scripts you may need.
 
 These 2 Include templates are also handy to keep the `Page.ss` template cleaner.
+
+## Troubleshooting
+
+Common problems you may encounter.
+
+### IE8 and 9 CSS limitations
+
+A very common problem is IE8 has a limit of 4095 selectors. If this is causing your css to fail on legacy IEs, you can 
+try copying and splitting `main.scss` into smaller chunks, e.g. `ie.base.scss` and `ie.components.scss`, where 
+`ie.base.scss` `@import`s generic, elements and objects, and the latter imports components and trumps. Please keep in
+mind settings and tools must be `@import`ed in both scss files.
+
+You can use the following script to help you calculate the number of css selectors:
+
+```javascript
+function countCSSRules() {
+    var results = '',
+        log = '';
+    if (!document.styleSheets) {
+        return;
+    }
+    for (var i = 0; i < document.styleSheets.length; i++) {
+        countSheet(document.styleSheets[i]);
+    }
+    function countSheet(sheet) {
+        var count = 0;
+        if (sheet && sheet.cssRules) {
+            for (var j = 0, l = sheet.cssRules.length; j < l; j++) {
+                if (!sheet.cssRules[j].selectorText) {
+                    if (sheet.cssRules[j].cssRules) {
+                        for (var m = 0, n = sheet.cssRules[j].cssRules.length; m < n; m++) {
+                            if(sheet.cssRules[j].cssRules[m].selectorText) {
+                                count += sheet.cssRules[j].cssRules[m].selectorText.split(',').length;
+                            }
+                        }
+                    }
+                }
+                else {
+                    count += sheet.cssRules[j].selectorText.split(',').length;
+                }
+            }
+ 
+            log += '\nFile: ' + (sheet.href ? sheet.href : 'inline <style> tag');
+            log += '\nRules: ' + sheet.cssRules.length;
+            log += '\nSelectors: ' + count;
+            log += '\n--------------------------';
+            if (count >= 4096) {
+                results += '\n********************************\nWARNING:\n There are ' + count + ' CSS rules in the stylesheet ' + sheet.href + ' - IE will ignore the last ' + (count - 4096) + ' rules!\n';
+            }
+        }
+    }
+    console.log(log);
+    console.log(results);
+};
+countCSSRules();
+```
+
+Read more about [IE's stylesheet limits](https://blogs.msdn.microsoft.com/ieinternals/2011/05/14/stylesheet-limits-in-internet-explorer/).
