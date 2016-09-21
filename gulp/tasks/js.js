@@ -46,6 +46,7 @@ module.exports = (gulp) => {
        .pipe(babel({ presets:['es2015'] }))
     )
       .pipe(cat('main.js'))
+      .pipe(gulp.dest('javascript/'))
       .pipe(uglify())
       .pipe(rename({suffix:'.min'}))
       .pipe(sourcemaps.write('.'))
