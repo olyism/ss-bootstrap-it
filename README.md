@@ -4,21 +4,24 @@ SilverStripe Bootstrap boilerplate
 A SilverStripe boilerplate theme with [Bootstrap 3 sass](https://github.com/twbs/bootstrap-sass) and equipped with the
 following practices:
 
-- Simple [gulp.js](http://gulpjs.com/) workflows for css, js and watch tasks 
+- [gulp.js](http://gulpjs.com/) workflows for css, js and watch tasks
+- [Browserify](http://browserify.org) for bundling frontend dependencies
 - [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/) architecture
 - [Airbnb CSS styleguide](https://github.com/airbnb/css) 
+- [Atomic CSS](http://acss.io) for generating predictable utility/helper classes
 - IE8 HTML5 markup support with [HTML5 Shiv](https://github.com/aFarkas/html5shiv)
   and media query support with [Respond.js](https://github.com/scottjehl/Respond)
 
 ## Requirements
 
-- [Node](https://nodejs.org/en/)
+- [Node](https://nodejs.org/en/) (`^6.0.0` is needed to run `gulp-svg-sprite`) 
 - [NPM](https://www.npmjs.com)
+- [scss-lint](https://github.com/causes/scss-lint)
 
 ## Installation
 
 1. [Install SilverStripe](https://docs.silverstripe.org/en/3.4/getting_started/installation/)
-2. Download/clone the theme and install under the themes folder.
+2. Download/clone this repo and install under the themes folder.
 3. Traverse to the theme and install npm modules `npm install` 
    (or use `yarn install` for faster install with [Yarn](https://yarnpkg.com/))
 4. Build the assets, run `npm run build` to build the css and scripts
@@ -37,12 +40,28 @@ them to the dist folders, i.e. `css` and `javascript/dist`.
 
 #### Common tasks
 
-- `gulp watch` - watches for css and js changes and compiles theme
-- `gulp build` - builds css and js for production
-- `gulp css` - compiles the css with [Sass](http://sass-lang.com/)
-- `gulp js` - compiles ES2015 with [Babel](https://babeljs.io/), and minifies with [UglifyJS](https://github.com/mishoo/UglifyJS)
-- `gulp browsersync` - use [Browsersync](https://www.browsersync.io/) to watch css and js changes, whilst synchronizing 
-  on multiple devices. Very handy for responsive frontend development and cross-browser testing
+##### Build
+
+Run `gulp build` for deployment, which builds all the assets (i.e. css, scripts, and sprites)
+
+##### Styling
+
+Run `gulp css:watch`, compiles css on `scss` changes.
+  
+Run `gulp sprite` to generate the sprites css and svg with png fallback.
+
+`gulp css:build` builds all styling assets, i.e. generate the sprites first and then compile the css.
+
+`gulp browsersync` uses [Browsersync](https://www.browsersync.io/) to watch css and js changes, whilst synchronizing 
+on multiple devices. Very handy for responsive frontend development and cross-browser testing
+
+##### Javascript
+
+`gulp js` bundles your scripts, and checks code quality with linting. `gulp js:build` bundles and minifies the scripts.
+
+`gulp watch` re-bundles your scripts on javascript changes with `watchify`.
+
+See `gulptask.babel.js` for all tasks.
 
 ## Styling
 
@@ -69,14 +88,58 @@ e.g. `_components.store-finder.scss`, `_components.chatbox.scss` etc.
 
 ### SCSS lint
 
-This boilerplate uses Airbnb's css style guide. Airbnb's scss lint settings are used to help with maintaining this
+This theme uses Airbnb's css style guide. Airbnb's scss lint settings are used to help with maintaining this
 convention. 
+
+We use [gulp-scss-lint](https://www.npmjs.com/package/gulp-scss-lint) to lint the scss. 
+This plugin requires Ruby and [scss-lint](https://github.com/causes/scss-lint).
+
+```
+gem install scss_lint
+```
+
+### Sprite
+
+We use `gulp-svg-sprites` to generate svg sprites with png fallback.
+
+To add icons to the sprite, simply put the svg icons in the `icons` folder and run `gulp sprite`. The gulp task will 
+create the png fallback icons and generate the scss partial.
+
+Please do not edit this partial directly.
+
+Sprites are also generated when `gulp build` or `gulp css:build` is run.
+
+### Utility/helper classes with Atomic CSS
+
+Atomic CSS (or acss) offers a range of predictable and terse class names for generating helper classes.
+
+This is handy when you want to, for example, make margin tweaks, simply do:
+
+```
+<h1 class="Mt(30)">I want to give more margin for this heading</h1>
+```
+
+This adds a `margin-top` of 30px (without touching any css).
+
+#### Gulp tasks
+
+Run `gulp acss`, Atomizer will look through all the `.ss` templates for Atomic classes and then generate the styles 
+in the `_utilities.atoms.scss` partial.
+
+`gulp css:watch` also watches for changes in the `.ss` templates and updates the css.
+
+Refer to [Atomic CSS's reference page](http://acss.io/reference) for a quick way to find the correct class name.
+
+#### Configurations
+
+Edit `gulp/config/acssrc.js` to configure acss, see [Atomizer's API section](https://github.com/acss-io/atomizer#api)
+for config options.
 
 ## JavaScript
 
-Custom scripts for the project should go into the 
+We use [Browserify](http://browserify.org) to bundle dependencies. Start your javascript magic in `javascript/main.js`.
 
-The `gulp-babel` plugin is used to allow ES2015.
+The `babelify` plugin is used to allow ES2015.
 
 ### Third-party assets
 
