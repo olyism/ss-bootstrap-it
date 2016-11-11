@@ -19,7 +19,8 @@ following practices:
 
 1. [Install SilverStripe](https://docs.silverstripe.org/en/3.4/getting_started/installation/)
 2. Download/clone the theme and install under the themes folder.
-3. Traverse to the theme and install npm modules `npm install` (this'll take a while)
+3. Traverse to the theme and install npm modules `npm install` 
+   (or use `yarn install` for faster install with [Yarn](https://yarnpkg.com/))
 4. Build the assets, run `npm run build` to build the css and scripts
 5. Enable the theme under CMS settings or in the 
    [config.yml](https://docs.silverstripe.org/en/3.1/developer_guides/templates/themes/) file
