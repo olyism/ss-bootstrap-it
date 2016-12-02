@@ -6,11 +6,11 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
 
-const SRC = require('./gulp/config').paths.src.js;
-const CONFIG = require('../config').eslint;
+const SRC = require('../config').paths.src.js;
+const OPTS = require('../config').config.eslint;
 
 gulp.task('eslint', () => {
   gulp.src(SRC)
-    .pipe(eslint(CONFIG))
+    .pipe(eslint(OPTS))
     .pipe(eslint.format());
 });
